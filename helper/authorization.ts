@@ -1,0 +1,32 @@
+export const verifyKaryawan = async(token: string) =>{
+    try {
+        const url =`${process.env.NEXT_PUBLIC_BASE_URL}/employee/me`
+        const result = await fetch(url, {
+            method: "GET",
+            headers: {authorization:`Bearer ${token}`, "app-key": process.env.NEXT_PUBLIC_APP_KEY || ""}
+        }) 
+        const data: any = await result.json()
+        // fetch menghubungkan ke backend(anxious tidak berlaku di file ini)
+        return data.success
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}
+
+export const verifyPelanggaan = async(token: string) =>{
+    try {
+        const url =`${process.env.NEXT_PUBLIC_BASE_URL}/customer/me`
+        const result = await fetch(url, {
+            method: "GET",
+            headers: {authorization:`Bearer ${token}`, "app-key": process.env.NEXT_PUBLIC_APP_KEY || ""}
+        }) 
+        const data: any = await result.json()
+        // fetch menghubungkan ke backend(anxious tidak berlaku di file ini)
+        return data.success
+    } catch (error) {
+        console.log(error)
+        return false
+    }
+}
+
