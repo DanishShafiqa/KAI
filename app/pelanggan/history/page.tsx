@@ -30,10 +30,10 @@ const GetDataHistory = async (
     }
 };
 type Props = {
-  searchParams: {
+  searchParams: Promise<{
     start_date?: string;
     end_date?: string;
-  };
+  }>;
 };
 
 const page = async (myProp: Props) => {
@@ -48,7 +48,7 @@ const page = async (myProp: Props) => {
       <FilterHistory startDate={start_date} endDate={end_date} />
       <div className="flex flex-col p-3">
         {historyData.map((item, index) => (
-          <HistoryCard key={index} item={item} />
+          <HistoryCard key={`keyHistory-${index}`} item={item} />
         ))}
       </div>
     </div>

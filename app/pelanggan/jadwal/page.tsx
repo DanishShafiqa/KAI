@@ -4,6 +4,8 @@ import { getServerCookie } from "@/helper/server-cookie";
 import { axiosInstance } from "@/helper/api";
 import Schedule from "./Schedule";
 
+
+
 const getJadwal = async (
     departure_location: string,
     arrived_location: string
@@ -28,10 +30,10 @@ try {
 
 
 type Props={
-    searchParams: {
+    searchParams: Promise<{
         departured_location?: string
         arrived_location?: string 
-    }
+    }>
 }
 
 const JadwalPage =async(myProp:Props)=>{
